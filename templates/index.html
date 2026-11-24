@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.webmanifest') }}">
+  <link rel="icon" href="{{ url_for('static', filename='icon.svg') }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='icon.svg') }}">
+  <title>DIP Lab Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <button class="menu-btn" id="menuBtn" aria-label="Open tools" aria-expanded="false">&#9776; Tools</button>
+  <div class="scrim" id="scrim"></div>
+
+  <aside class="rail" id="rail">
+    <button class="brand" id="homeBtn" title="Back to overview">
+      <span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>
+        <strong>DIP Lab Studio</strong>
+        <small>CSE 4246, Lab 1 and Lab 2</small>
+      </span>
+    </button>
+    <input class="search" id="search" type="search" placeholder="Search tools" aria-label="Search tools" autocomplete="off">
+    <nav id="nav" aria-label="Tools"></nav>
+  </aside>
+
+  <main class="stage" id="stage">
+    <header class="bar">
+      <div class="title">
+        <h1 id="opTitle">DIP Lab Studio</h1>
+        <p id="opDesc"></p>
+        <p class="formula" id="opFormula" hidden></p>
+      </div>
+      <div class="actions">
+        <div class="file" id="fileChip" hidden>
+          <img id="fileThumb" alt="">
+          <div><b id="fileName"></b><span id="fileMeta"></span></div>
+          <button class="ghost" id="changeBtn">Change image</button>
+        </div>
+        <button class="ghost" id="printBtn" hidden>Print or save as PDF</button>
+      </div>
+    </header>
+
+    <section class="controls" id="controls" hidden></section>
+
+    <section class="drop" id="drop">
+      <div class="drop-inner">
+        <h2>Drop an image here</h2>
+        <p>Every tool runs on it. You can also paste from the clipboard.</p>
+        <div class="row">
+          <button class="solid" id="pickBtn">Choose image</button>
+          <button class="ghost cam-only" id="camBtn">Take photo</button>
+          <button class="ghost" id="sampleBtn">Use sample image</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="alert" id="alert" role="alert" hidden></div>
+    <section class="home" id="home"></section>
+    <section class="out" id="out"></section>
+  </main>
+
+  <input type="file" id="fileInput" accept="image/*" hidden>
+  <input type="file" id="camInput" accept="image/*" capture="environment" hidden>
+  <div class="dragveil" id="veil">Release to upload</div>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

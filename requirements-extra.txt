@@ -1,0 +1,7 @@
+# Optional. Only needed for these tools:
+#   ultralytics -> "Count people and objects" and "YOLO object detection"
+#   easyocr     -> "Text recognition (OCR)"  (first run downloads a small model, needs internet)
+# Both pull in PyTorch (about 1 GB+), so they do NOT fit on Render's free 512 MB plan.
+# Use them on your own PC, or on a paid Render instance (2 GB RAM or more).
+ultralytics
+easyocr

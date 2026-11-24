@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: dip-lab-studio
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # One worker on purpose: uploaded images live in memory (STORE in app.py),
+    # so every request must reach the same process. Threads give concurrency.
+    startCommand: gunicorn app:app --workers 1 --threads 4 --timeout 120 --bind 0.0.0.0:$PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: MAX_SIDE
+        value: "1600"
